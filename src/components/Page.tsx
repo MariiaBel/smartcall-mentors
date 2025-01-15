@@ -27,5 +27,5 @@ export function Page({ children, back = true }: PropsWithChildren<{
     });
   }, [router]);
 
-  return <>{children}</>;
+  return <div>{children}</div>;
 }

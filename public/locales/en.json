@@ -1,6 +1,13 @@
 {
-  "i18n": {
-    "header": "Application supports i18n",
-    "footer": "You can select a different language from the dropdown menu."
+  "main-header": "поиск ментора без посредника",
+  "main-footer": "Для предложений и сотрудничества",
+  "be-a-mentor": "Стать ментором",
+  "list-of-mentors": "Найти ментора",  
+  "mentor": {
+    "header": "Заполните карточку ментора",
+    "footer": "После сохранения данных ваша карточка ментора появится в общем списке менторов",
+    "save": "Сахранить данные",
+    "not-for-bot": "Бот не может быть ментором",
+    "not-telegram-user": "Нужно быть телеграм пользователем"
   }
 }

@@ -1,0 +1,13 @@
+.footer {
+    margin-top: auto;
+}
+
+.form {
+    --tgui--bg_color: transparent;
+    padding: 20px;
+}
+
+.fieldset {
+    /* background: var(--tgui--bg_color); */
+    border: none;
+}

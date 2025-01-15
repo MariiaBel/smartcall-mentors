@@ -1,47 +1,17 @@
-# Telegram Mini Apps Next.js Template
+# SmartCall 
+## for people who is a mentor or who looking for a mentor
 
-This template demonstrates how developers can implement a web application on the
-Telegram Mini Apps platform using the following technologies and libraries:
+Creater - [MariiaBel](https://smartcall-mariiabel.vercel.app/)
 
-- [Next.js](https://nextjs.org/)
-- [TypeScript](https://www.typescriptlang.org/)
-- [TON Connect](https://docs.ton.org/develop/dapps/ton-connect/overview)
-- [@telegram-apps SDK](https://docs.telegram-mini-apps.com/packages/telegram-apps-sdk/2-x)
-- [Telegram UI](https://github.com/Telegram-Mini-Apps/TelegramUI)
+Telegram Mini App - [smartcall_mentors_bot](t.me/smartcall_mentors_bot)
 
-> The template was created using [pnpm](https://pnpm.io/). Therefore, it is
-> required to use it for this project as well. Using other package managers, you
-> will receive a corresponding error.
+Done! Congratulations on your new bot. You will find it at t.me/smartcall_mentors_bot. You can now add a description, about section and profile picture for your bot, see /help for a list of commands. By the way, when you've finished creating your cool bot, ping our Bot Support if you want a better username for it. Just make sure the bot is fully operational before you do this.
 
-## Install Dependencies
+Use this token to access the HTTP API:
+7943045599:AAHqfRJmxItQUtJBqFBMP31hGZhPSqqYewc
+Keep your token secure and store it safely, it can be used by anyone to control your bot.
 
-If you have just cloned this template, you should install the project
-dependencies using the command:
-
-```Bash
-pnpm install
-```
-
-## Scripts
-
-This project contains the following scripts:
-
-- `dev`. Runs the application in development mode.
-- `dev:https`. Runs the application in development mode using self-signed SSL
-  certificate.
-- `build`. Builds the application for production.
-- `start`. Starts the Next.js server in production mode.
-- `lint`. Runs [eslint](https://eslint.org/) to ensure the code quality meets
-  the required
-  standards.
-
-To run a script, use the `pnpm run` command:
-
-```Bash
-pnpm run {script}
-# Example: pnpm run build
-```
-
+For a description of the Bot API, see this page: https://core.telegram.org/bots/api
 ## Create Bot and Mini App
 
 Before you start, make sure you have already created a Telegram Bot. Here is

@@ -26,6 +26,7 @@ function getUserRows(user: User): DisplayDataRow[] {
 }
 
 export default function InitDataPage() {
+  // console.log(initData, 111111)
   const initDataRaw = useSignal(initData.raw);
   const initDataState = useSignal(initData.state);
 

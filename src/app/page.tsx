@@ -1,62 +1,56 @@
 'use client';
 
-import { Section, Cell, Image, List } from '@telegram-apps/telegram-ui';
+import { Section, Subheadline, Button, Headline } from '@telegram-apps/telegram-ui';
 import { useTranslations } from 'next-intl';
 
 import { Link } from '@/components/Link/Link';
-import { LocaleSwitcher } from '@/components/LocaleSwitcher/LocaleSwitcher';
 import { Page } from '@/components/Page';
-
-import tonSvg from './_assets/ton.svg';
+import styles from './page.module.css';
 
 export default function Home() {
-  const t = useTranslations('i18n');
+  const t = useTranslations();
 
   return (
     <Page back={false}>
-      <List>
-        <Section
-          header="Features"
-          footer="You can use these pages to learn more about features, provided by Telegram Mini Apps and other useful projects"
-        >
-          <Link href="/ton-connect">
-            <Cell
-              before={
-                <Image
-                  src={tonSvg.src}
-                  style={{ backgroundColor: '#007AFF' }}
-                />
-              }
-              subtitle="Connect your TON wallet"
+        <section className='content'>
+          <header className="header">
+            <Headline
+                weight="2"
             >
-              TON Connect
-            </Cell>
-          </Link>
-        </Section>
-        <Section
-          header="Application Launch Data"
-          footer="These pages help developer to learn more about current launch information"
-        >
-          <Link href="/init-data">
-            <Cell subtitle="User data, chat information, technical data">
-              Init Data
-            </Cell>
-          </Link>
-          <Link href="/launch-params">
-            <Cell subtitle="Platform identifier, Mini Apps version, etc.">
-              Launch Parameters
-            </Cell>
-          </Link>
-          <Link href="/theme-params">
-            <Cell subtitle="Telegram application palette information">
-              Theme Parameters
-            </Cell>
-          </Link>
-        </Section>
-        <Section header={t('header')} footer={t('footer')}>
-          <LocaleSwitcher/>
-        </Section>
-      </List>
+              &nbsp;  •  &nbsp; SmartCall &nbsp;  •  &nbsp;
+            </Headline>
+            <Subheadline
+              level="2"
+              weight="3"
+            >
+                {t('main-header')}
+            </Subheadline>
+          </header>
+
+          <div className={styles.btns}>
+            <Button
+              Component="a"
+              href="/mentor"
+              mode="outline"
+              size="l"
+            >
+              {t('be-a-mentor')}
+            </Button>
+            <Button
+              Component="a"
+              href="/mentors"
+              mode="outline"
+              size="l"
+            >
+              {t('list-of-mentors')}
+            </Button>
+          </div>
+
+          <Section.Footer className='footer'>
+            {t('main-footer')} &nbsp;  •  &nbsp;
+            {<Link href="https://t.me/MariiaBel">@MariiaBel</Link>}
+          </Section.Footer>
+        </section>
     </Page>
   );
 }

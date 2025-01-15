@@ -1,3 +1,30 @@
 body {
   background: var(--tg-theme-secondary-bg-color, white);
 }
+
+.content {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.h1 {
+  font-size: var(--tgui--text--font_size);
+  line-height: var(--tgui--text--line_height);
+  font-weight: var(--tgui--font_weight--accent2);
+  padding: 20px 24px 4px 22px;
+  color: var(--tgui--text_color);
+  padding-left: 24px;
+}
+
+.footer {
+  padding: 30px 24px 12px;
+  margin-top: auto;
+}
+
+.header {
+  padding: 12px 24px;
+}

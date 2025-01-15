@@ -10,8 +10,8 @@ import 'normalize.css/normalize.css';
 import './_assets/globals.css';
 
 export const metadata: Metadata = {
-  title: 'Your Application Title Goes Here',
-  description: 'Your application description goes here',
+  title: 'SmartCall - поиск наставника без посредников',
+  description: 'Для наставников и для поиска наставника без посредников',
 };
 
 export default async function RootLayout({ children }: PropsWithChildren) {
