@@ -21,10 +21,19 @@ body {
 }
 
 .footer {
-  padding: 30px 24px 12px;
+  padding: 30px 12px 12px;
   margin-top: auto;
 }
 
 .header {
-  padding: 12px 24px;
+  padding: 12px;
+}
+
+
+.error {
+  color: var(--tg-theme-destructive-text-color);
+}
+
+.success {
+  color: var(--tg-theme-accent-text-color);
 }

@@ -29,20 +29,16 @@ export default function Home() {
 
           <div className={styles.btns}>
             <Button
-              Component="a"
-              href="/mentor"
               mode="outline"
               size="l"
             >
-              {t('be-a-mentor')}
+              <Link href='/mentor'>{t('mentor_card')}</Link>
             </Button>
             <Button
-              Component="a"
-              href="/mentors"
               mode="outline"
               size="l"
             >
-              {t('list-of-mentors')}
+              <Link href='/mentor'>{t('list-of-mentors')}</Link>
             </Button>
           </div>
 

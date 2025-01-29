@@ -1,0 +1,16 @@
+.breadcrumbs  {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 25px;
+    padding-bottom: 20px;
+}
+.breadcrumbItem {
+    position: relative;
+}
+.breadcrumbItem:not(:last-child):after {
+    content: "  •  ";
+    position: absolute;
+    right: -16px;
+    color: var(--tgui--text_color);
+}
