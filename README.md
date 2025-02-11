@@ -1,5 +1,5 @@
 # SmartCall 
-## for people who is a mentor or who looking for a mentor
+## for people who looking for a mentor without intermediaries
 
 Creater - [MariiaBel](https://smartcall-mariiabel.vercel.app/)
 
