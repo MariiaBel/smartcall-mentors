@@ -11,9 +11,9 @@ import { redirect } from 'next/navigation';
 const FormSchema = z.object({
   id: z.string(),
   telegram_id: z.string(),
-  name:  z.string().min(1, { message: "Введите имя." }),
-  stack:  z.string().min(1, { message: "Введите стек технологий." }),
-  price:  z.string().min(1, { message: "Введите цену или напишите 'по договоренности'." }),
+  name: z.string().min(1, { message: "Введите имя." }),
+  stack: z.string().min(1, { message: "Введите стек технологий." }),
+  price: z.string().min(1, { message: "Введите цену или напишите 'по договоренности'." }),
   description: z.string().min(100, { message: "Введите минимум 100 символов о себе. Опишите чем вы можете помочь менти." }),
   date: z.string()
 });
@@ -32,7 +32,7 @@ function mentorValidation(formData: FormData) {
 
   if (!validatedFields.success) {
     const fieldErrors = validatedFields.error.flatten().fieldErrors
-    const message = Object.keys(fieldErrors).reduce((acc, fieldKey)=> `${acc} ${fieldErrors[fieldKey]}`, '')
+    const message = Object.keys(fieldErrors).reduce((acc, fieldKey) => `${acc} ${fieldErrors[fieldKey]}`, '')
 
     return {
       status: 'error',
@@ -42,26 +42,26 @@ function mentorValidation(formData: FormData) {
   }
 
   return validatedFields.data
-  
+
 
 }
 
 export async function createMentor(formData: FormData) {
   const validationResult = mentorValidation(formData);
-  if(validationResult.status === 'error') return validationResult
+  if (validationResult.status === 'error') return validationResult
 
   const { telegram_id, name, stack, price, description } = validationResult
-  const status =  formData.get('status')
+  const status = formData.get('status')
   const date = new Date().toISOString().split('T')[0];
 
   try {
-    const result = await sql`
+    await sql`
       INSERT INTO mentors (telegram_id, name, stack, price, description, date, status)
       VALUES (${telegram_id}, ${name}, ${stack}, ${price}, ${description}, ${date}, ${status})
-      `;
-      
-    return { 
-      status: 'success', 
+    `;
+
+    return {
+      status: 'success',
       message: 'Поздравляю! Данные успешно сохранены. Вы в списке менторов.'
     }
   } catch (error: Error) {
@@ -72,16 +72,16 @@ export async function createMentor(formData: FormData) {
       detail: error.detail
     };
   }
-  
+
 }
 
 export async function updateMentor(formData: FormData) {
 
   const validationResult = mentorValidation(formData);
-  if(validationResult.status === 'error') return validationResult
+  if (validationResult.status === 'error') return validationResult
 
   const { telegram_id, name, stack, price, description } = validationResult
-  const status =  formData.get('status')
+  const status = formData.get('status')
 
   try {
     await sql`
@@ -89,8 +89,8 @@ export async function updateMentor(formData: FormData) {
       SET name = ${name}, stack =${stack}, price=${price}, description=${description}, status=${status}
       WHERE telegram_id = ${telegram_id}
     `
-    return { 
-      status: 'success', 
+    return {
+      status: 'success',
       message: 'Поздравляю! Данные успешно обновлены.'
     }
   } catch (error: Error) {

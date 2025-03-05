@@ -1,4 +1,4 @@
-export type Mentor = {
+export type TMentor = {
   id: string,
   telegram_id: string,
   name: string,
@@ -6,5 +6,9 @@ export type Mentor = {
   price: string,
   description: string,
   date: Date,
-  status: null | 'hidden',
+  status: EStatusMentor | null,
+}
+
+export enum EStatusMentor {
+  hidden = 'hidden'
 }

@@ -17,6 +17,7 @@ const mentors = [
     stack: 'JS, HTML, CSS, React',
     price: '1223 p',
     description: 'My description. Something about me and my experience',
+    status: '',
     date: '2023-06-09'
   },
 ];

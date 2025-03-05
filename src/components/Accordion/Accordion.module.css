@@ -1,0 +1,15 @@
+.accordion {
+
+}
+
+
+.summary {
+    cursor: pointer;
+    list-style: none;
+    --tgui--tertiary_bg_color: transparent;
+    text-align: left;
+}
+
+.btn {
+    margin-top: 10px;
+}

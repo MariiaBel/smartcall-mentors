@@ -2,20 +2,3 @@
     margin-top: auto;
 }
 
-.form {
-    --tgui--bg_color: transparent;
-    padding: 20px 0;
-}
-
-.fieldset {
-    /* background: var(--tgui--bg_color); */
-    --tgui--tertiary_bg_color: transparent;
-    --tgui--bg_color: var(--tg-theme-secondary-bg-color);
-    border: none;
-    text-align: left;
-}
-
-.btn {
-    display: block;
-    margin: auto;
-}

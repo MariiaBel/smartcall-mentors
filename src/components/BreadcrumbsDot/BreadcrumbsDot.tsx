@@ -23,7 +23,7 @@ export const BreadcrumbsDot = ({breadcrumbs}: TBreadcrumbsProps) => {
             { breadcrumbs.map((item, index: number) => {
                 return item.href ? (
                     <Link className={styles.breadcrumbItem} key={index} href={item.href}> {t(item.name)} </Link>
-                ) : <span className={styles.breadcrumbItem}>{t(item.name)}</span>
+                ) : <span className={styles.breadcrumbItem} key={index}>{t(item.name)}</span>
             })}
         </div>
     )
