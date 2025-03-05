@@ -1,9 +1,9 @@
 # SmartCall 
-## for people who is a mentor or who looking for a mentor
+## for people who looking for a mentor without intermediaries
 
 Creater - [MariiaBel](https://smartcall-mariiabel.vercel.app/)
 
-Telegram Mini App - [smartcall_mentors_bot](t.me/smartcall_mentors_bot)
+Telegram Mini App - [smartcall_mentors_bot](https://t.me/smartcall_mentors_bot)
 
 Done! Congratulations on your new bot. You will find it at t.me/smartcall_mentors_bot. You can now add a description, about section and profile picture for your bot, see /help for a list of commands. By the way, when you've finished creating your cool bot, ping our Bot Support if you want a better username for it. Just make sure the bot is fully operational before you do this.
 
