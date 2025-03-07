@@ -2,15 +2,18 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: center;
     gap: 25px;
     padding-bottom: 20px;
 }
 .breadcrumbItem {
     position: relative;
+    display: flex;
+    align-items: center;
 }
 .breadcrumbItem:not(:last-child):after {
     content: "  •  ";
-    position: absolute;
+    position: relative;
     right: -16px;
     color: var(--tgui--text_color);
 }

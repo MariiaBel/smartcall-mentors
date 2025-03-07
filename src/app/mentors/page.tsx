@@ -31,10 +31,7 @@ export default async function Mentors() {
     return (
         <Page>
             <section className="content">
-                <BreadcrumbsDot
-                    className="breadcrumbs"
-                    breadcrumbs={breadcrumbs}
-                />
+                <BreadcrumbsDot breadcrumbs={breadcrumbs} />
                 <Headline weight="2" className="header">
                     &nbsp; • &nbsp; {t("header")} &nbsp; • &nbsp;
                 </Headline>
