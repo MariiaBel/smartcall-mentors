@@ -15,6 +15,10 @@ body {
   box-sizing: border-box;
 }
 
+.breadcrumbs {
+  justify-content: center;
+}
+
 .h1 {
   font-size: var(--tgui--text--font_size);
   line-height: var(--tgui--text--line_height);
@@ -32,7 +36,6 @@ body {
 .header {
   padding: 12px;
 }
-
 
 .error {
   color: var(--tg-theme-destructive-text-color);

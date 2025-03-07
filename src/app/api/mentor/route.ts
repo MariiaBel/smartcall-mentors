@@ -1,16 +1,17 @@
-import { Mentor } from "@/app/lib/definitions";
+import { TMentor } from "@/app/lib/definitions";
 import { sql } from "@vercel/postgres";
 import { NextRequest } from "next/server";
 
 export async function GET(request: NextRequest, params: any) {
-  try {
-    const searchParams = request.nextUrl.searchParams
+  const searchParams = await request.nextUrl.searchParams
+  const id = searchParams.get('id')
 
-    if (searchParams.get('id')) {
-      const data = await sql<Mentor>`
-            SELECT name, stack, price, description, date, status
+  try {
+    if (id) {
+      const data = await sql<TMentor>`
+            SELECT *
             FROM mentors
-            WHERE mentors.telegram_id = ${searchParams.get('id')};
+            WHERE mentors.telegram_id = ${id};
           `;
 
       if (data.rows[0]) {

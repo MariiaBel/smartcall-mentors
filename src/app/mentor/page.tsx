@@ -37,11 +37,14 @@ export default function Mentor() {
         }
         return null;
     }, [initDataState?.user?.id]);
-    
+
     return (
         <Page>
             <section className="content">
-                <BreadcrumbsDot breadcrumbs={breadcrumbs} />
+                <BreadcrumbsDot
+                    className="breadcrumbs"
+                    breadcrumbs={breadcrumbs}
+                />
                 <Headline weight="2" className="header">
                     &nbsp; • &nbsp; {t("header")} &nbsp; • &nbsp;
                 </Headline>
@@ -52,7 +55,7 @@ export default function Mentor() {
                     mentorResponse && (
                         <Suspense fallback={<p>Loading ...</p>}>
                             <FormMentor
-                                userId={initDataState?.user?.id}
+                                user={initDataState?.user}
                                 mentorResponse={mentorResponse}
                             />
                         </Suspense>

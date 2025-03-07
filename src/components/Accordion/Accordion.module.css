@@ -13,3 +13,17 @@
 .btn {
     margin-top: 10px;
 }
+
+.badget {
+    align-items: center;
+    border-radius: 20px;
+    box-sizing: border-box;
+    display: inline-flex;
+    text-align: center;
+    justify-content: center;
+    margin: 0 6px;
+    min-width: 20px;
+    padding: 0 5px;
+    background: rgba(82, 136, 193, 0.5);
+    color: var(--tgui--button_text_color);
+}

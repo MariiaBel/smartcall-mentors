@@ -4,35 +4,40 @@ import { z } from 'zod';
 import { sql } from '@vercel/postgres';
 import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
+import { TValidationFieldErrors } from './definitions';
 // import { signIn } from '@/auth';
 // import { AuthError } from 'next-auth';
 
 
 const FormSchema = z.object({
-  id: z.string(),
+  username: z.string(),
+  date: z.string(),
   telegram_id: z.string(),
-  name: z.string().min(1, { message: "Введите имя." }),
-  stack: z.string().min(1, { message: "Введите стек технологий." }),
+  status: z.string(),
+
+  name: z.string().min(3, { message: "Введите имя. Минимум 3 символа." }),
+  stack: z.string().min(2, { message: "Введите стек технологий. Минимум 2 символа" }),
   price: z.string().min(1, { message: "Введите цену или напишите 'по договоренности'." }),
   description: z.string().min(100, { message: "Введите минимум 100 символов о себе. Опишите чем вы можете помочь менти." }),
-  date: z.string()
 });
 
-const FormSchemaMentors = FormSchema.omit({ id: true, date: true, status: true });
+const FormSchemaMentors = FormSchema.omit({ date: true, status: true, username: true, telegram_id: true });
 
 function mentorValidation(formData: FormData) {
   const validatedFields = FormSchemaMentors.safeParse({
-    telegram_id: formData.get('telegram_id'),
     name: formData.get('name'),
     stack: formData.get('stack'),
     price: formData.get('price'),
     description: formData.get('description'),
-    status: formData.get('status')
   })
 
   if (!validatedFields.success) {
-    const fieldErrors = validatedFields.error.flatten().fieldErrors
-    const message = Object.keys(fieldErrors).reduce((acc, fieldKey) => `${acc} ${fieldErrors[fieldKey]}`, '')
+    const fieldErrors: TValidationFieldErrors = validatedFields.error.flatten().fieldErrors
+    let message = ''
+    for (let key in fieldErrors) {
+      message += ` ${key}`
+    }
+    // const message = Object.keys(fieldErrors).reduce((acc, fieldKey) => `${acc} ${fieldErrors[fieldKey]}`, '')
 
     return {
       status: 'error',
@@ -42,29 +47,30 @@ function mentorValidation(formData: FormData) {
   }
 
   return validatedFields.data
-
-
 }
 
 export async function createMentor(formData: FormData) {
-  const validationResult = mentorValidation(formData);
-  if (validationResult.status === 'error') return validationResult
+  const validationResult = doValidation(formData)
+  if (validationResult.status !== 'success') return validationResult
 
-  const { telegram_id, name, stack, price, description } = validationResult
-  const status = formData.get('status')
+  const { name, stack, price, description } = validationResult
+  const status = formData.get('status') as string
+  const username = formData.get('username') as string
+  const telegram_id = formData.get('telegram_id') as string
   const date = new Date().toISOString().split('T')[0];
+
 
   try {
     await sql`
-      INSERT INTO mentors (telegram_id, name, stack, price, description, date, status)
-      VALUES (${telegram_id}, ${name}, ${stack}, ${price}, ${description}, ${date}, ${status})
+      INSERT INTO mentors (telegram_id, username, name, stack, price, description, date, status)
+      VALUES (${telegram_id}, ${username}, ${name}, ${stack}, ${price}, ${description}, ${date}, ${status})
     `;
 
     return {
       status: 'success',
       message: 'Поздравляю! Данные успешно сохранены. Вы в списке менторов.'
     }
-  } catch (error: Error) {
+  } catch (error: any) {
 
     return {
       status: 'error',
@@ -77,16 +83,18 @@ export async function createMentor(formData: FormData) {
 
 export async function updateMentor(formData: FormData) {
 
-  const validationResult = mentorValidation(formData);
-  if (validationResult.status === 'error') return validationResult
+  const validationResult = doValidation(formData)
+  if (validationResult.status !== 'success') return validationResult
 
-  const { telegram_id, name, stack, price, description } = validationResult
+  const { name, stack, price, description } = validationResult
   const status = formData.get('status')
+  const username = formData.get('username')
+  const telegram_id = formData.get('telegram_id')
 
   try {
     await sql`
       UPDATE mentors
-      SET name = ${name}, stack =${stack}, price=${price}, description=${description}, status=${status}
+      SET name = ${name}, stack =${stack}, price=${price}, description=${description}, status=${status}, username=${username}
       WHERE telegram_id = ${telegram_id}
     `
     return {
@@ -102,4 +110,23 @@ export async function updateMentor(formData: FormData) {
   }
   // revalidatePath('/mentor');
   // redirect('/mentor');
+}
+
+
+function doValidation(formData: FormData) {
+  const validationResult = mentorValidation(formData);
+
+  if ('status' in validationResult && validationResult.status === 'error') return validationResult
+
+  if (!('name' in validationResult) || !('stack' in validationResult) && !('price' in validationResult) && !('description' in validationResult)) {
+    return {
+      status: 'error',
+      message: 'Ошибка при записи ментора. Обратитесь в поддержку.',
+    }
+  }
+
+  return {
+    status: 'success',
+    ...validationResult
+  }
 }

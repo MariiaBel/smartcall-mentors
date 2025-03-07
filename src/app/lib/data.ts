@@ -7,7 +7,6 @@ import { Mentor } from './definitions';
 export async function fetchMentors(): Promise<Mentor[] | undefined> {
   try {
     const data = await sql<Mentor[]>`SELECT * FROM mentors`;
-    // console.log(data.rows)
     return data.rows;
 
   } catch (error) {

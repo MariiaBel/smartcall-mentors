@@ -5,6 +5,7 @@ import { Headline } from "@telegram-apps/telegram-ui";
 import { getTranslations } from "next-intl/server";
 import { fetchMentors } from "../lib/data";
 import Accordion from "@/components/Accordion/Accordion";
+import { Link } from "@/components/Link/Link";
 
 const breadcrumbs = [
     {
@@ -13,12 +14,12 @@ const breadcrumbs = [
         componentName: "a",
     },
     {
+        name: "mentor_list",
+    },
+    {
         name: "mentor_card",
         href: "/mentor",
         componentName: "a",
-    },
-    {
-        name: "mentor_list",
     },
 ];
 
@@ -30,7 +31,10 @@ export default async function Mentors() {
     return (
         <Page>
             <section className="content">
-                <BreadcrumbsDot breadcrumbs={breadcrumbs} />
+                <BreadcrumbsDot
+                    className="breadcrumbs"
+                    breadcrumbs={breadcrumbs}
+                />
                 <Headline weight="2" className="header">
                     &nbsp; • &nbsp; {t("header")} &nbsp; • &nbsp;
                 </Headline>
@@ -41,7 +45,10 @@ export default async function Mentors() {
                         actionText={t("connect_to_mentor")}
                     />
                 ))}
-                <footer className="footer">{t("footer")}</footer>
+                <footer className="footer">
+                    {t("footer")}{" "}
+                    <Link href="https://t.me/MariiaBel">@MariiaBel</Link>
+                </footer>
             </section>
         </Page>
     );

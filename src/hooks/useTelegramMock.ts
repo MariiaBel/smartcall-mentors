@@ -20,15 +20,16 @@ export function useTelegramMock(): void {
     // apply them previously, or they may be specified on purpose using the
     // default launch parameters transmission method.
     let lp: LaunchParams | undefined;
+
     try {
       lp = retrieveLaunchParams();
     } catch (e) {
       const initDataRaw = new URLSearchParams([
         ['user', JSON.stringify({
-          id: 99281940,
-          first_name: 'Andrew',
-          last_name: 'Rogue',
-          username: 'rogue',
+          id: 99281999, // 99281940
+          first_name: 'TestUser',
+          last_name: 'SmartCall',
+          username: 'mariiabel',
           language_code: 'en',
           is_premium: true,
           allows_write_to_pm: true,

@@ -15,7 +15,7 @@ const mentors = [
     telegram_id: '12345678',
     name: 'UserTest1',
     stack: 'JS, HTML, CSS, React',
-    price: '1223 p',
+    price: '1234 p',
     description: 'My description. Something about me and my experience',
     status: '',
     date: '2023-06-09'

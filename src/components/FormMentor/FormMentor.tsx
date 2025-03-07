@@ -13,16 +13,20 @@ import {
 } from "@telegram-apps/telegram-ui";
 
 type TFormMentorProp = {
-    userId: string;
+    user: {
+        allowsWriteToPm: boolean;
+        firstName: string;
+        id: number;
+        isPremium: boolean;
+        languageCode: "en" | "ru";
+        lastName: string;
+        username: string;
+    };
     mentorResponse: Promise<TMentor[]>;
 };
 
-export default function FormMentor({
-    userId,
-    mentorResponse,
-}: TFormMentorProp) {
+export default function FormMentor({ user, mentorResponse }: TFormMentorProp) {
     const t = useTranslations("mentor");
-
     const [success, setSuccess] = useState("");
     const [error, setError] = useState("");
     const [isPending, setIsPending] = useState(false);
@@ -33,7 +37,8 @@ export default function FormMentor({
 
         setIsPending(true);
 
-        formData.set("telegram_id", userId.toString() || "");
+        formData.set("telegram_id", user.id.toString() || "");
+        formData.set("username", user.username || "");
         formData.set(
             "status",
             formData.get("visibility") ? EStatusMentor.hidden : ""
@@ -48,10 +53,10 @@ export default function FormMentor({
         setIsPending(false);
 
         if (result?.status === "success") {
-            setSuccess(result?.message || "Поздравляю! Данные сохранены.");
+            setSuccess(result?.message || t("form.save_data"));
             setError("");
         } else {
-            setError(result?.message || "Ошибка. Свяжитесь с @MariiaBel");
+            setError(result?.message || t("form.error"));
             setSuccess("");
         }
         // redirect("/");
@@ -62,26 +67,26 @@ export default function FormMentor({
             <fieldset className={styles.fieldset}>
                 <Input
                     name="name"
-                    header="Имя *"
-                    placeholder="Напишите свое имя"
+                    header={`${t('form.name')} *`}
+                    placeholder={t('form.placeholder_name')}
                     defaultValue={mentor?.name || ""}
                 />
                 <Input
                     name="stack"
-                    header="Стек *"
-                    placeholder="ES6, React, HTML, CSS"
+                    header={`${t('form.stack')} *`}
+                    placeholder={t('form.placeholder_stack')}
                     defaultValue={mentor?.stack || ""}
                 />
                 <Input
                     name="price"
-                    header="Цена *"
-                    placeholder="Цена за час консультации"
+                    header={`${t('form.price')} *`}
+                    placeholder={t('form.placeholder_price')}
                     defaultValue={mentor?.price || ""}
                 />
                 <Textarea
                     name="description"
-                    header="О себе *"
-                    placeholder="С чем вы можите помочь"
+                    header={`${t('form.desc')} *`}
+                    placeholder={t('form.placeholder_desc')}
                     defaultValue={mentor?.description || ""}
                 />
                 <Cell
@@ -94,7 +99,7 @@ export default function FormMentor({
                             }
                         />
                     }
-                    description="Скрыть карточку ментора"
+                    description={t('form.card_hidden')}
                     multiline
                 ></Cell>
             </fieldset>
