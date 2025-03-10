@@ -1,17 +1,11 @@
-# SmartCall 
+# SmartCall
+
 ## for people who looking for a mentor without intermediaries
 
 Creater - [MariiaBel](https://smartcall-mariiabel.vercel.app/)
 
 Telegram Mini App - [smartcall_mentors_bot](https://t.me/smartcall_mentors_bot)
 
-Done! Congratulations on your new bot. You will find it at t.me/smartcall_mentors_bot. You can now add a description, about section and profile picture for your bot, see /help for a list of commands. By the way, when you've finished creating your cool bot, ping our Bot Support if you want a better username for it. Just make sure the bot is fully operational before you do this.
-
-Use this token to access the HTTP API:
-7943045599:AAHqfRJmxItQUtJBqFBMP31hGZhPSqqYewc
-Keep your token secure and store it safely, it can be used by anyone to control your bot.
-
-For a description of the Bot API, see this page: https://core.telegram.org/bots/api
 ## Create Bot and Mini App
 
 Before you start, make sure you have already created a Telegram Bot. Here is
@@ -106,6 +100,6 @@ more details.
 
 ## Useful Links
 
-- [Platform documentation](https://docs.telegram-mini-apps.com/)
-- [@telegram-apps/sdk-react documentation](https://docs.telegram-mini-apps.com/packages/telegram-apps-sdk-react)
-- [Telegram developers community chat](https://t.me/devs)
+-   [Platform documentation](https://docs.telegram-mini-apps.com/)
+-   [@telegram-apps/sdk-react documentation](https://docs.telegram-mini-apps.com/packages/telegram-apps-sdk-react)
+-   [Telegram developers community chat](https://t.me/devs)
