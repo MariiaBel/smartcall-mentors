@@ -1,4 +1,8 @@
 body {
+  --tgui--tertiary_bg_color: transparent ;
+  --tgui--bg_color: var(--tg-theme-secondary-bg-color) t;
+  --tg-theme-bg-color: var(--tg-theme-hint-color) ;
+  
   background: var(--tg-theme-secondary-bg-color, white);
 }
 

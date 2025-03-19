@@ -6,6 +6,14 @@ import { getTranslations } from "next-intl/server";
 import { fetchMentors } from "../lib/data";
 import Accordion from "@/components/Accordion/Accordion";
 import { Link } from "@/components/Link/Link";
+import styles from "./mentors.module.css";
+import FilterMentors from "@/components/FilterMentors/FilterMentors";
+
+type TMentorProps = {
+    searchParams?: Promise<{
+        stack?: string;
+    }>;
+};
 
 const breadcrumbs = [
     {
@@ -23,25 +31,41 @@ const breadcrumbs = [
     },
 ];
 
-export default async function Mentors() {
+export default async function Mentors(props: TMentorProps) {
     const t = await getTranslations("mentors");
-
     const mentorList = await fetchMentors();
+    const searchParams = await props.searchParams;
+    const chosenStack: string = searchParams?.stack || "";
 
     return (
-        <Page>
+        <Page className={styles.page}>
             <section className="content">
                 <BreadcrumbsDot breadcrumbs={breadcrumbs} />
                 <Headline weight="2" className="header">
                     &nbsp; • &nbsp; {t("header")} &nbsp; • &nbsp;
                 </Headline>
-                {mentorList?.map((mentor, index) => (
-                    <Accordion
-                        key={index}
-                        mentor={mentor}
-                        actionText={t("connect_to_mentor")}
-                    />
-                ))}
+
+                <FilterMentors mentors={mentorList || []} />
+
+                {mentorList
+                    ?.filter((mentor) =>
+                        chosenStack
+                            .split(",")
+                            .map((item: string) => item.toLowerCase().trim())
+                            .every(
+                                (stack: string) =>
+                                    mentor.stack
+                                        .toLowerCase()
+                                        .indexOf(stack) !== -1
+                            )
+                    )
+                    .map((mentor, index) => (
+                        <Accordion
+                            key={index}
+                            mentor={mentor}
+                            actionText={t("connect_to_mentor")}
+                        />
+                    ))}
                 <footer className="footer">
                     {t("footer")}{" "}
                     <Link href="https://t.me/MariiaBel">@MariiaBel</Link>

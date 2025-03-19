@@ -26,8 +26,8 @@ export function useTelegramMock(): void {
     } catch (e) {
       const initDataRaw = new URLSearchParams([
         ['user', JSON.stringify({
-          id: 99281999, // 99281940
-          first_name: 'TestUser',
+          id: 99281997, // 99281940, 99281999, 99281998
+          first_name: 'TestUser1',
           last_name: 'SmartCall',
           username: 'mariiabel',
           language_code: 'en',

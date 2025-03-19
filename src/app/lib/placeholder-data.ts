@@ -14,9 +14,32 @@ const mentors = [
     id: '410544b2-4001-4271-9855-fec4b6a6442a',
     telegram_id: '12345678',
     name: 'UserTest1',
+    username: 'UserNameTest1',
     stack: 'JS, HTML, CSS, React',
     price: '1234 p',
     description: 'My description. Something about me and my experience',
+    status: '',
+    date: '2023-06-09'
+  },
+  {
+    id: '410544b2-4001-4271-9855-fec4b6a6442b',
+    telegram_id: '12345679',
+    name: 'UserTest2',
+    username: 'UserNameTest2',
+    stack: 'семейный врач',
+    price: '40$',
+    description: 'ыма ываал аоыв аываор ыаво раыв аыв аыв арывоарывла  ваыаорывалоа ывалоывраыв ралывралыв а ываоывв раывлво аывв авы аыв раывр',
+    status: '',
+    date: '2023-06-09'
+  },
+  {
+    id: '410544b2-4001-4271-9855-fec4b6a6442с',
+    telegram_id: '12345680',
+    name: 'UserTest3',
+    username: 'UserNameTest3',
+    stack: 'повар, кулинария',
+    price: '2000 рублей',
+    description: 'ыма ываал аоыв аываор ыаво раыв аыв аыв арывоарывла  ваыаорывалоа ывалоывраыв ралывралыв а ываоывв раывлво аывв авы аыв раывр',
     status: '',
     date: '2023-06-09'
   },

@@ -12,8 +12,8 @@
     align-items: center;
 }
 .breadcrumbItem:not(:last-child):after {
-    content: "  •  ";
+    content: "•";
     position: relative;
-    right: -16px;
+    right: -12px;
     color: var(--tgui--text_color);
 }

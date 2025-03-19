@@ -1,0 +1,5 @@
+div.page {
+    --tgui--tertiary_bg_color: transparent;
+    --tgui--bg_color: var(--tg-theme-secondary-bg-color);
+    --tg-theme-bg-color: var(--tg-theme-secondary-bg-color);
+}

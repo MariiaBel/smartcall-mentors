@@ -30,8 +30,7 @@ export const BreadcrumbsDot = ({
                         key={index}
                         href={item.href}
                     >
-                        {" "}
-                        {t(item.name)}{" "}
+                        {t(item.name)}
                     </Link>
                 ) : (
                     <span className={styles.breadcrumbItem} key={index}>
